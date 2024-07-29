@@ -1,4 +1,10 @@
 <div>
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <h2>Filters:</h2>
     <div class="row my-2">
         <div class="col-4">
@@ -24,6 +30,16 @@
             </div>
         </div>
     </div>
+    <div class="send-mail">
+        <button type="button" class="btn btn-primary my-2" wire:click="sendMail" wire:loading.remove> Notify me
+            📭</button>
+        <button type="button" class="btn btn-primary my-2" wire:loading wire:target="sendMail" disabled>
+            Notify me 📭
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        </button>
+    </div>
+
+    <hr>
 
     <table class="table table-hover">
         <thead>
