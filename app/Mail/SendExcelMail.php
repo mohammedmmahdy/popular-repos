@@ -13,7 +13,7 @@ class SendExcelMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    protected $repositories;
+    public $repositories;
 
     public function __construct($repositories)
     {
@@ -23,7 +23,6 @@ class SendExcelMail extends Mailable
     public function build()
     {
         $file = Excel::raw(new RepositoryExport($this->repositories), \Maatwebsite\Excel\Excel::XLSX);
-
         return $this->view('emails.excel')
             ->attachData($file, 'repositories.xlsx', [
                 'mime' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',

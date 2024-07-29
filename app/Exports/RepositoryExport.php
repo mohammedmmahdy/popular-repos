@@ -22,7 +22,6 @@ class RepositoryExport implements FromCollection, WithMapping, WithHeadings, Wit
 
     public function collection()
     {
-        // dd($this->repositories);
         return $this->repositories;
     }
 
@@ -43,7 +42,7 @@ class RepositoryExport implements FromCollection, WithMapping, WithHeadings, Wit
             $repository['name'],
             $repository['owner']['login'],
             $repository['language'],
-            $repository['forks_count'],
+            $repository['forks'],
             $repository['created_at'],
         ];
     }
